@@ -1,31 +1,21 @@
 using UnityEngine;
 
+/// <summary>
+/// This class deals with player input.
+/// </summary>
 public class ShipInput : MonoBehaviour
 {
+    private Vector3 mousePos;
+
     // Mouse position relative to screen.
-    [Range(-1, 1)]
-    [SerializeField] private float pitch;
-    [Range(-1, 1)]
-    [SerializeField] private float yaw;
-    
-    private bool wIsPressed;
-    private bool sIsPressed;
+    public float Pitch { get; private set; }
+    public float Yaw { get; private set; }
 
-    private bool qIsPressed;
-    private bool eIsPressed;
-
-    // A bunch of static getters for any class interested in input information.
-    public static float Pitch => instance.pitch;
-    public static float Yaw => instance.yaw;
-
-    public static bool WIsPressed => instance.wIsPressed;
-    public static bool SIsPressed => instance.sIsPressed;
-    public static bool QIsPressed => instance.qIsPressed;
-    public static bool EIsPressed => instance.eIsPressed;
-
-    private static ShipInput instance;
-
-    private void Awake() => instance = this;
+    // Keyboard input info.
+    public bool WIsPressed { get; private set; }
+    public bool SIsPressed { get; private set; }
+    public bool QIsPressed { get; private set; }
+    public bool EIsPressed { get; private set; }
 
     void Update()
     {
@@ -35,41 +25,43 @@ public class ShipInput : MonoBehaviour
 
     /// <summary>
     /// Imitate virtual joystick to rotate ship by mouse position on the screen.
+    /// Huge thanks to brihernandez for source code of this method:
+    /// https://github.com/brihernandez/ArcadeSpaceFlightExample/blob/master/Assets/ArcadeSpaceFlight/Code/Ship/ShipInput.cs
     /// </summary>
     private void SetStickCommandsUsingMouse()
     {
-        Vector3 mousePos = Input.mousePosition;
+        mousePos = Input.mousePosition;
 
         // Figure out mouse position relative to center of screen.
         // (0, 0) is center, (-1, -1) is bottom left, (1, 1) is top right.      
-        pitch = (mousePos.y - (Screen.height * 0.5f)) / (Screen.height * 0.5f);
-        yaw = (mousePos.x - (Screen.width * 0.5f)) / (Screen.width * 0.5f);
+        Pitch = (mousePos.y - (Screen.height * 0.5f)) / (Screen.height * 0.5f);
+        Yaw = (mousePos.x - (Screen.width * 0.5f)) / (Screen.width * 0.5f);
 
         // Make sure the values don't exceed limits.
-        pitch = -Mathf.Clamp(pitch, -1.0f, 1.0f);
-        yaw = Mathf.Clamp(yaw, -1.0f, 1.0f);
+        Pitch = -Mathf.Clamp(Pitch, -1.0f, 1.0f);
+        Yaw = Mathf.Clamp(Yaw, -1.0f, 1.0f);
     }
 
     private void HandleKeyboardInput()
     {
         if (Input.GetKey(KeyCode.W))
-            wIsPressed = true;
+            WIsPressed = true;
         else
-            wIsPressed = false;
+            WIsPressed = false;
 
         if (Input.GetKey(KeyCode.S))
-            sIsPressed = true;
+            SIsPressed = true;
         else
-            sIsPressed = false;
+            SIsPressed = false;
 
         if (Input.GetKey(KeyCode.Q))
-            qIsPressed = true;
+            QIsPressed = true;
         else
-            qIsPressed = false;
+            QIsPressed = false;
 
         if (Input.GetKey(KeyCode.E))
-            eIsPressed = true;
+            EIsPressed = true;
         else
-            eIsPressed = false;
+            EIsPressed = false;
     }
 }

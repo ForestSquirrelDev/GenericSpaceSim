@@ -11,21 +11,20 @@ using UnityEngine;
 [RequireComponent(typeof(ShipCollisions))]
 public class Ship : MonoBehaviour
 {
-    [SerializeField] private ShipInput playerInput;
+    [SerializeField] private ShipInput shipInput;
     [SerializeField] private ShipMovement shipMovement;
     [SerializeField] private ShipRotation shipRotation;
     [SerializeField] private ShipCollisions shipCollisions;
 
-    public ShipInput PlayerInput => playerInput;
+    public ShipInput ShipInput => shipInput;
     public ShipMovement ShipMovement => shipMovement;
     public ShipRotation ShipRotation => shipRotation;
     public ShipCollisions ShipCollisions => shipCollisions;
-    
 
     private void Awake()
     {
-        if (playerInput == null)
-            playerInput = GetComponent<ShipInput>();
+        if (shipInput == null)
+            shipInput = GetComponent<ShipInput>();
         if (shipMovement == null)
             shipMovement = GetComponent<ShipMovement>();
         if (shipRotation == null)

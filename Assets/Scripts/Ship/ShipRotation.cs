@@ -5,22 +5,30 @@ using UnityEngine;
 /// </summary>
 public class ShipRotation : MonoBehaviour
 {
-    [Range(0, 300)]
+    [Range(1.0f, 300.0f)]
     [Tooltip("How fast the ship is reacting to mouse position.")]
     [SerializeField] private float rotationSpeed = 120.0f;
 
-    [Tooltip("Current speed of rotation by Z axis (i.e. tilting).")]
-    [SerializeField] private float currTiltSpeed = 0f;
+    [Range(1.0f, 200.0f)]
+    [Tooltip("How fast the ship turns by Z axis (i.e. rolls).")]
+    [SerializeField] private float deltaRollSpeed = 100.0f;
 
-    [Range(0, 200)]
-    [Tooltip("How fast the ship turns by Z axis.")]
-    [SerializeField] private float deltaTiltSpeed = 100.0f;
+    [Range(1.0f, 200.0f)]
+    [Tooltip("Current roll speed will be clamped between this value and its negative representation.")]
+    [SerializeField] private float maxRollSpeed = 100.0f;
 
-    [Range(0, 200)]
-    [Tooltip("Current tilt speed will be clamped between this value and its negative representation.")]
-    [SerializeField] private float maxTiltSpeed = 100.0f;
+    [Range(1.0f, 10.0f)]
+    [Tooltip("Power of inertia for roll. The bigger this value is, the faster ship stops rolling after key is released.")]
+    [SerializeField] private float inertia = 1.5f;
+
+    [Range(0.01f, 1.0f)]
+    [Tooltip("Amount of smoothing for roll. Smaller value -> more smoothed motion.")]
+    [SerializeField] private float rollLerpTime = 0.4f;
 
     [SerializeField] private Ship ship;
+
+    // Current speed of rotation by Z axis.
+    private float currRollSpeed = 0f;
 
     private Transform thisTransform;
 
@@ -41,10 +49,9 @@ public class ShipRotation : MonoBehaviour
     private void HandleRotation()
     {
         // Rotate ship's Transform by X and Y axes according to mouse position input.
-        thisTransform.Rotate
-            ((ShipInput.Pitch * rotationSpeed) * Time.deltaTime,
-            (ShipInput.Yaw * rotationSpeed) * Time.deltaTime,
-            0f);
+        thisTransform.Rotate(xAngle: (ship.ShipInput.Pitch * rotationSpeed) * Time.deltaTime,
+                             yAngle: (ship.ShipInput.Yaw * rotationSpeed) * Time.deltaTime,
+                             zAngle: 0f);
     }
 
     /// <summary>
@@ -53,23 +60,23 @@ public class ShipRotation : MonoBehaviour
     /// </summary>
     private void HandleTilting()
     {
-        if (currTiltSpeed > 0f || currTiltSpeed < 0f)
-            transform.Rotate(0f, 0f, currTiltSpeed * Time.deltaTime);
+        if (currRollSpeed > 0f || currRollSpeed < 0f)
+            thisTransform.Rotate(0f, 0f, currRollSpeed * Time.deltaTime);
 
-        if (ShipInput.QIsPressed)
-            currTiltSpeed += Time.deltaTime * deltaTiltSpeed;
-        else if (ShipInput.EIsPressed)
-            currTiltSpeed -= Time.deltaTime * deltaTiltSpeed;
+        if (ship.ShipInput.QIsPressed)
+            currRollSpeed += Time.deltaTime * deltaRollSpeed;
+        else if (ship.ShipInput.EIsPressed)
+            currRollSpeed -= Time.deltaTime * deltaRollSpeed;
 
-        else if (currTiltSpeed > 0f)
-            currTiltSpeed = Mathf.Lerp(currTiltSpeed,
-                                       currTiltSpeed - Time.deltaTime * deltaTiltSpeed * 1.5f,
-                                       0.4f);
-        else if (currTiltSpeed < 0f)
-            currTiltSpeed = Mathf.Lerp(currTiltSpeed,
-                                       currTiltSpeed + Time.deltaTime * deltaTiltSpeed * 1.5f,
-                                       0.4f);
+        else if (currRollSpeed > 0f)
+            currRollSpeed = Mathf.Lerp(a: currRollSpeed,
+                                       b: currRollSpeed - Time.deltaTime * deltaRollSpeed * inertia,
+                                       t: rollLerpTime);
+        else if (currRollSpeed < 0f)
+            currRollSpeed = Mathf.Lerp(a: currRollSpeed,
+                                       b: currRollSpeed + Time.deltaTime * deltaRollSpeed * inertia,
+                                       t: rollLerpTime);
 
-        currTiltSpeed = Mathf.Clamp(currTiltSpeed, -maxTiltSpeed, maxTiltSpeed);
+        currRollSpeed = Mathf.Clamp(currRollSpeed, -maxRollSpeed, maxRollSpeed);
     }
 }

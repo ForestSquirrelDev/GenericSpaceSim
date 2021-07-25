@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5270341830592705446}
   - component: {fileID: 5270341830593573246}
   - component: {fileID: 5270341830594537264}
+  - component: {fileID: 1941474816}
   m_Layer: 0
   m_Name: test_asteroid2_LOD2
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1941474816
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270341830592495948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 4300000, guid: 4fc98ba1e54e0f64aa2c95885ef7026e, type: 3}
 --- !u!1 &5270341830592526816
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +311,6 @@ GameObject:
   - component: {fileID: 5270341830592813894}
   - component: {fileID: 5270341830593511352}
   - component: {fileID: 5270341830594536142}
-  - component: {fileID: 950461095705051254}
   m_Layer: 0
   m_Name: test_asteroid2_LOD0
   m_TagString: Untagged
@@ -367,17 +381,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &950461095705051254
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5270341830592567284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e259e812818c9074dbe1011ab1789aae, type: 3}

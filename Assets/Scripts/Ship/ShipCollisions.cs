@@ -3,9 +3,10 @@ using UnityEngine;
 /// <summary>
 /// This script helps Unity physics engine deal with collisions, since we're using Transform-based movement.
 /// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class ShipCollisions : MonoBehaviour
 {
-    [Range(0, 1)]
+    [Range(0.01f, 1.0f)]
     [Tooltip("How fast ship will lose its speed on collision. Bigger value -> faster speed drop.\nSmall values (approximately < 0.5f) will cause passing through colliders.")]
     [SerializeField] private float onCollisionSpeedDrop = 0.6f;
 
@@ -26,5 +27,9 @@ public class ShipCollisions : MonoBehaviour
             ship.ShipMovement.CurrentSpeed = Mathf.Lerp (a: ship.ShipMovement.CurrentSpeed,
                                                          b: ship.ShipMovement.CurrentSpeed /= otherRigidbody.mass,
                                                          t: onCollisionSpeedDrop);
+        else
+        {
+            Debug.LogWarning("Could not decrease speed: no rigidbody attached to collision object.");
+        }
     }
 }
