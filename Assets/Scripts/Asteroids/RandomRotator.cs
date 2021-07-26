@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Applies random angular velocity to an asteroid at the start of game.
+/// Applies random angular velocity to an asteroid at the start of the game.
 /// </summary>
 public class RandomRotator : MonoBehaviour
 {

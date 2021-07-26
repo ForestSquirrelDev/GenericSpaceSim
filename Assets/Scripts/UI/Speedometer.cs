@@ -25,6 +25,6 @@ public class Speedometer : MonoBehaviour
 
     void Update()
     {
-        speed.text = "Speed: " + Mathf.Round(ship.ShipMovement.CurrentSpeed).ToString();
+        speed.text = "Speed: " + ship.ShipMovement.CurrentSpeed.ToString(format: "0");
     }
 }
