@@ -17,7 +17,7 @@ Idea of the project was to see if i can mimic movement type that is normally ach
 - Mouse to change pitch/yaw
 
 ### Component organisation
-When several components are meant to be on the same GameObject (in this case - player controller for ship), personally i like to break down all the necessary scripts into separate self-contained parts, in order to make player controller-related code more manageable and sustainable, and set up easy communication between components.
+When several components are meant to be on the same GameObject (in this case its flying controls for ship), personally i like to break down all the necessary scripts into separate self-contained parts, in order to make this player controller-related code more manageable and sustainable, and set up easy communication between components.
 
 ![CO](https://user-images.githubusercontent.com/82777171/127177990-a1c28b0e-a919-43c1-baf5-570b5a4aa0a2.png)
 
