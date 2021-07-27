@@ -34,7 +34,7 @@ public class ShipMovement : MonoBehaviour
     public float CurrentSpeed
     {
         get => currentSpeed;
-        internal set => currentSpeed = value;
+        set => currentSpeed = value;
     }
 
     private void Awake()

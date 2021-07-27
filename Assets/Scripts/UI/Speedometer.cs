@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Speedometer : MonoBehaviour
 {
-    [SerializeField] Text speed;
+    [SerializeField] Text speedText;
     [SerializeField] Ship ship;
 
     private void Awake()
@@ -16,15 +16,15 @@ public class Speedometer : MonoBehaviour
             Debug.LogWarning($"Field '{nameof(ship)}' is not set in the inspector. FindObjectOfType will be used instead.");
             ship = FindObjectOfType<Ship>();
         }
-        if (speed == null)
+        if (speedText == null)
         {
-            Debug.LogWarning($"Field '{nameof(speed)}' is not set in the inspector. {gameObject.name} will be disabled.");
+            Debug.LogWarning($"Field '{nameof(speedText)}' is not set in the inspector. {gameObject.name} will be disabled.");
             gameObject.SetActive(false);
         }
     }
 
     void Update()
     {
-        speed.text = "Speed: " + ship.ShipMovement.CurrentSpeed.ToString(format: "0");
+        speedText.text = "Speed: " + ship.ShipMovement.CurrentSpeed.ToString(format: "0");
     }
 }
