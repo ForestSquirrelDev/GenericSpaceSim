@@ -4,7 +4,7 @@ Idea of the project was to see if i can mimic movement type that is normally ach
 
 ## Download
 - [Original project](https://drive.google.com/file/d/1jVkF2nSzNzuTofgM8kjBztXfi9Psl_Lg/view?usp=sharing) with heavy skybox and spaceship assets (316MB in total).
-- [Lightweight project](https://github.com/ForestSquirrelDev/GenericSpaceSim/blob/master/Packages/Generic%20space%20sim%20demo%20light%20size.unitypackage) with smaller size assets (44MB in total).
+- [Lightweight project](https://github.com/ForestSquirrelDev/GenericSpaceSim/blob/master/Packages/Generic%20space%20sim%20light.unitypackage) with smaller size assets (44MB in total).
 
 ### Controls
 - W/S to speed up or slow down
