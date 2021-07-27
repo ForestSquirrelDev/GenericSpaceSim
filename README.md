@@ -5,7 +5,7 @@ https://user-images.githubusercontent.com/82777171/127158500-a50c5fb4-cec7-43f0-
 
 
 
-Idea of the project was to see if i can mimic movement type that is normally achieved by rigidbody physics, using only object's transform. I did not know what i'm gonna achieve in the end, but i think it turned out to be pretty fun and arcade-like movement system.
+Idea of the project was to see if i can mimic movement type that is normally achieved by rigidbody physics, using only object's transform. I did not know what i'm gonna achieve in the end, but i think it turned out to be pretty fun and arcade-like movement system. All visuals are free assets from Unity assetstore.
 
 ## Download
 - [Original project](https://drive.google.com/file/d/1jVkF2nSzNzuTofgM8kjBztXfi9Psl_Lg/view?usp=sharing) with heavy skybox and spaceship assets (316MB in total).
