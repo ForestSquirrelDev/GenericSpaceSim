@@ -1,10 +1,14 @@
 # Generic Space Sim
-https://www.youtube.com/watch?v=U_C_9nTsncE&t=2s
+
+
+https://user-images.githubusercontent.com/82777171/127151394-6d00d48e-6d88-48b7-a876-a003ef1866b5.mp4
+
+
 Idea of the project was to see if i can mimic movement type that is normally achieved by rigidbody physics, using only object's transform. I did not know what i'm gonna achieve in the end, but i think it turned out to be pretty fun and arcade-like movement system.
 
 ## Download
 - [Original project](https://drive.google.com/file/d/1jVkF2nSzNzuTofgM8kjBztXfi9Psl_Lg/view?usp=sharing) with heavy skybox and spaceship assets (316MB in total).
-- [Lightweight project](https://github.com/ForestSquirrelDev/GenericSpaceSim/blob/master/Packages/Generic%20space%20sim%20light.unitypackage) with smaller size assets (44MB in total).
+- [Lightweight project](https://github.com/ForestSquirrelDev/GenericSpaceSim/blob/master/Packages/Generic%20space%20sim%20demo%20light%20size.unitypackage) with smaller size assets (44MB in total).
 
 ### Controls
 - W/S to speed up or slow down
