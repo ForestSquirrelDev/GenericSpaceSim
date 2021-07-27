@@ -1,6 +1,8 @@
 # Generic Space Sim
 
-https://www.youtube.com/embed/U_C_9nTsncE
+
+https://user-images.githubusercontent.com/82777171/127158500-a50c5fb4-cec7-43f0-b617-37cb4d0d0a69.mp4
+
 
 
 Idea of the project was to see if i can mimic movement type that is normally achieved by rigidbody physics, using only object's transform. I did not know what i'm gonna achieve in the end, but i think it turned out to be pretty fun and arcade-like movement system.
